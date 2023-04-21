@@ -5,10 +5,16 @@ cur = "Hello, world!\n"
 clients = []
 def handle_client(connection, client_address):
     global cur
+    global clients
+    clients.append(connection)
+    print(f"Current clients connected: {clients}")
     while True:
         data = connection.recv(1024).decode()
         if not data or data == "DISCONNECT\n":
             print(f"Client {client_address} disconnected")
+            clients.remove(connection)
+            print(f"Clients connected: {clients}")
+            connection.close()
             break
         print(f"Received data from {client_address}: {data}")
         
