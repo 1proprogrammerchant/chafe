@@ -1,7 +1,7 @@
 import socket
 import threading
 
-cur = "Hello, world!\n"
+cur = "null: null\n"
 clients = []
 def handle_client(connection, client_address):
     global cur
