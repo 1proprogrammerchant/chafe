@@ -1,7 +1,6 @@
 import socket
 import threading
-
-cur = "\n"
+cur = "null: null\n"
 clients = []
 def sendstr(connection, message):
     connection.sendall(message.encode())
