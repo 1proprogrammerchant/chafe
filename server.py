@@ -31,10 +31,12 @@ def handle_client(connection, client_address):
             sendstr(connection, """HTTP/1.0 405 Method Not Allowed
 Server: Stupid
 Allow: DISCONNECT
+Connection: close
 Content-Type: text/html; charset=utf-8
-Content-Length: 0
 
-""")
+<html><body><t>
+hi, this is not an html page, pls dont be htmling at me
+</t></body></html>""")
         else:
             if cur != data:
                 cur = data
