@@ -1,6 +1,6 @@
 import socket
 import threading
-SERVER_ADDRESS = (input("host please... "), 3337)
+SERVER_ADDRESS = ("masterxeon.hopto.org", 3337)
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect(SERVER_ADDRESS)
 username = input("username please... ")
@@ -15,6 +15,8 @@ def receive_messages():
         if message.startswith('CHANGE\n'):
             new_content = message[7:]
             print(new_content)
+        if message == "ALIVEREQ\n":
+            client_socket.send("ALIVEOK\n".encode())
 message_thread = threading.Thread(target=receive_messages)
 message_thread.start()
 while True:
