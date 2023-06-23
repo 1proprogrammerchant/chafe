@@ -55,9 +55,9 @@ hi, this is not an html page, pls dont be htmling at me
     connection.close()
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('192.168.0.75', 3337)
+server_address = ('0.0.0.0', 3337)
 sock.bind(server_address)
-sock.listen(5)
+sock.listen(-1)
 print(f"Server listening on {server_address}")
 
 
